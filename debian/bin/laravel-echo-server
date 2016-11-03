@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# TAG=latest
+# BRANCH=master
+TAG=latest
+SYSTEM=debian
+SCRIPT=laravel-echo-server
+
+if [ "self-update" == "$1" ]; then
+    docker pull toby1991/node:$TAG
+    wget -nv --no-check-certificate -O /tmp/$SCRIPT https://raw.githubusercontent.com/toby1991/docker-node/master/$SYSTEM/bin/$SCRIPT \
+        && cat /tmp/$SCRIPT > $0 \
+        && rm -f /tmp/$SCRIPT \
+        && exit 0
+    exit 1
+else
+    docker run --rm -t -i -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro toby1991/node:$TAG /run-as-user /usr/local/bin/$SCRIPT --allow-root $@
+fi
