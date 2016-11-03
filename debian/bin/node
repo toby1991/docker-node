@@ -14,5 +14,5 @@ if [ "self-update" == "$1" ]; then
         && exit 0
     exit 1
 else
-    docker run --rm -t -i -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro toby1991/node:$TAG /run-as-user /usr/local/bin/$SCRIPT --allow-root $@
+    docker run --rm -t -i -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro toby1991/node:$TAG /run-as-user /usr/local/bin/$SCRIPT $@
 fi
