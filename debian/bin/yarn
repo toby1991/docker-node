@@ -3,12 +3,12 @@
 # TAG=latest
 # BRANCH=master
 TAG=latest
-BRANCH=debian
+SYSTEM=debian
 SCRIPT=yarn
 
 if [ "self-update" == "$1" ]; then
     docker pull toby1991/node:$TAG
-    wget -nv --no-check-certificate -O /tmp/$SCRIPT https://raw.githubusercontent.com/toby1991/docker-npm/$BRANCH/bin/$SCRIPT \
+    wget -nv --no-check-certificate -O /tmp/$SCRIPT https://raw.githubusercontent.com/toby1991/docker-node/master/$SYSTEM/bin/$SCRIPT \
         && cat /tmp/$SCRIPT > $0 \
         && rm -f /tmp/$SCRIPT \
         && exit 0
