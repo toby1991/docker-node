@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:7.0.0
 
 MAINTAINER Toby <t.post@hotmail.com>
 
